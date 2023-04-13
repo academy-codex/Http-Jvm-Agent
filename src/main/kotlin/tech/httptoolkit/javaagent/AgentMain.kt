@@ -73,8 +73,8 @@ fun interceptAllHttps(config: Config, instrumentation: Instrumentation) {
     AgentProxyPort = proxyPort
 
     // Reconfigure the JVM default settings:
-    setDefaultProxy(proxyHost, proxyPort)
-    setDefaultSslContext(InterceptedSslContext)
+//    setDefaultProxy(proxyHost, proxyPort)
+//    setDefaultSslContext(InterceptedSslContext)
 
     val debugMode = !System.getenv("DEBUG_JVM_HTTP_PROXY_AGENT").isNullOrEmpty()
     val logger = TransformationLogger(debugMode)
@@ -91,36 +91,36 @@ fun interceptAllHttps(config: Config, instrumentation: Instrumentation) {
         .with(logger)
 
     arrayOf(
-        OkHttpClientV3Transformer(logger),
-        OkHttpClientV2Transformer(logger),
-        ApacheClientRoutingV4Transformer(logger),
-        ApacheClientRoutingV5Transformer(logger),
-        ApacheSslSocketFactoryTransformer(logger),
-        ApacheClientTlsStrategyTransformer(logger),
-        ApacheHostConfigurationTransformer(logger),
-        ApacheHttpMethodDirectorTransformer(logger),
-        ApacheProtocolTransformer(logger),
-        JavaClientTransformer(logger),
+//        OkHttpClientV3Transformer(logger),
+//        OkHttpClientV2Transformer(logger),
+//        ApacheClientRoutingV4Transformer(logger),
+//        ApacheClientRoutingV5Transformer(logger),
+//        ApacheSslSocketFactoryTransformer(logger),
+//        ApacheClientTlsStrategyTransformer(logger),
+//        ApacheHostConfigurationTransformer(logger),
+//        ApacheHttpMethodDirectorTransformer(logger),
+//        ApacheProtocolTransformer(logger),
+//        JavaClientTransformer(logger),
         UrlConnectionTransformer(logger),
-        HttpsUrlConnectionTransformer(logger),
-        ProxySelectorTransformer(logger),
-        SslContextTransformer(logger),
-        JettyClientTransformer(logger),
-        AsyncHttpClientConfigTransformer(logger),
-        AsyncHttpChannelManagerTransformer(logger),
-        ReactorNettyClientConfigTransformer(logger),
-        ReactorNettyProxyProviderTransformer(logger),
-        ReactorNettyOverrideRequestAddressTransformer(logger),
-        ReactorNettyHttpClientSecureTransformer(logger),
-        KtorClientEngineConfigTransformer(logger),
-        KtorCioEngineTransformer(logger),
-        KtorClientTlsTransformer(logger),
-        AkkaHttpTransformer(logger),
-        AkkaPoolSettingsTransformer(logger),
-        AkkaPoolTransformer(logger),
-        AkkaGatewayTransformer(logger),
-        VertxHttpClientTransformer(logger),
-        VertxNetClientOptionsTransformer(logger),
+//        HttpsUrlConnectionTransformer(logger),
+//        ProxySelectorTransformer(logger),
+//        SslContextTransformer(logger),
+//        JettyClientTransformer(logger),
+//        AsyncHttpClientConfigTransformer(logger),
+//        AsyncHttpChannelManagerTransformer(logger),
+//        ReactorNettyClientConfigTransformer(logger),
+//        ReactorNettyProxyProviderTransformer(logger),
+//        ReactorNettyOverrideRequestAddressTransformer(logger),
+//        ReactorNettyHttpClientSecureTransformer(logger),
+//        KtorClientEngineConfigTransformer(logger),
+//        KtorCioEngineTransformer(logger),
+//        KtorClientTlsTransformer(logger),
+//        AkkaHttpTransformer(logger),
+//        AkkaPoolSettingsTransformer(logger),
+//        AkkaPoolTransformer(logger),
+//        AkkaGatewayTransformer(logger),
+//        VertxHttpClientTransformer(logger),
+//        VertxNetClientOptionsTransformer(logger),
     ).forEach { matchingAgentTransformer ->
         agentBuilder = matchingAgentTransformer.register(agentBuilder)
     }

@@ -21,8 +21,6 @@ class UrlConnectionTransformer(logger: TransformationLogger): MatchingAgentTrans
         return builder
             .visit(loadAdvice("tech.httptoolkit.javaagent.advice.OverrideUrlConnectionProxyAdvice")
                 .on(
-                    hasMethodName<MethodDescription>("openConnection")
-                    .and(takesArguments(1))
-                    .and(takesArgument(0, named("java.net.Proxy")))))
+                    hasMethodName("getHost")))
     }
 }
